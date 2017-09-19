@@ -193,7 +193,9 @@ And the final detection areas are looking like this:
 
 The code for this step is contained in the section "Step 5. Testing the pipeline" of the IPython notebook P5.ipynb
 
-First of all, I did not used color and spatial features and it boosted computations because the pipeline does less operations. Second, I only looked in the determined regions of intrest in the image instead of processing the whole frame. With that I achieved speed of 2.4 frames per second on the project video.
+First of all, I did not used color and spatial features and it boosted computations because the pipeline does less operations. Second, I only looked in the determined regions of intrest in the image instead of processing the whole frame. I also extracted HOG features for the entire region of intrest and when subsampled them, instead of computing them all over again for the individual sliding windows.
+
+With all of that I achieved speed of 2.4 frames per second on the project video.
 
 These are the examples how my pipeline is working on the test images:
 
@@ -221,6 +223,7 @@ Here's an example result showing the heatmap from an image, thresholded heatmap 
 <img src="output_images/heatmap.png" width="720" alt="Combined Image" />
 <img src="output_images/heatmap_thresholded.png" width="720" alt="Combined Image" />
 <img src="output_images/label.png" width="720" alt="Combined Image" />
+<img src="output_images/final_test.png" width="720" alt="Combined Image" />
 
 ---
 
@@ -230,7 +233,7 @@ Here's an example result showing the heatmap from an image, thresholded heatmap 
 
 The implemented pipeline, based on the HOG features and SVM classifier, does reasonably well on the project video. It looses the white car at some point for a second, but overall it detects cars in the video most of the time. It shows one false positive detection at the left side near the end of the video, but not for long.
 
-To further improve the performance of the pipeline I could use more filters and more clever way to identify heat threshold than just dividing number of frames by two. I could experiment with deep learning instead of SVM classifier or I even could use YOLO "you only look once" architecture of neural network to make a robust classifier.
+To further improve the performance of the pipeline I could use more filters and more clever way to identify heat threshold than just dividing the number of kept frames by two. I also could experiment with deep learning instead of SVM classifier or I even could use YOLO "you only look once" architecture of neural network to make a robust classifier.
 
 The pipeline is likely to fail on cars which are different from the ones in the dataset and the dataset is quite small for a robust learning, so getting a bigger dataset will result in better and more robust predictions.
 
