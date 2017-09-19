@@ -12,7 +12,7 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Histogram of Oriented Gradients (HOG)
@@ -148,17 +148,17 @@ Model accuracy:  0.9803
 It seems like using high values of "orientation" and all of the image channels is the way to go. However, it's not just about scores on the test set, right? I did not included results of my exploration of the top combinations, but in the end I determined that "YUV" color space provides the best result on the project test video, because all other top combinations gave me way more false positives on the video.
 
 The final set of parametres for extracting HOG features is listed below:
-colorspace = 'YUV'
-orientation = 11
-all of the channels
+* colorspace = 'YUV'
+* orientation = 11
+* all of the channels
 
 Let's look how this set does on the random images of each class from the dataset:
 
 <img src="output_images/final_hog.png" width="720" alt="Combined Image" />
 
-###Sliding Window Search
+### Sliding Window Search
 
-####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
+#### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
 The code for this step is contained in the section "Step 3. Sliding Window Search" of the IPython notebook P5.ipynb  
 
@@ -189,7 +189,7 @@ And the final detection areas are looking like this:
 <img src="output_images/sliding_search_final.png" width="720" alt="Combined Image" />
 
 
-####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
+#### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 The code for this step is contained in the section "Step 5. Testing the pipeline" of the IPython notebook P5.ipynb
 
@@ -203,7 +203,7 @@ These are the examples how my pipeline is working on the test images:
 
 Here's a [link to my video result](./project_video_out_final.mp4)
 
-####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
+#### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
 The code for this step is contained in the section "Step 4. Identifying final detection boxes" of the IPython notebook P5.ipynb
 
@@ -224,9 +224,9 @@ Here's an example result showing the heatmap from an image, thresholded heatmap 
 
 ---
 
-###Discussion
+### Discussion
 
-####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 The implemented pipeline, based on the HOG features and SVM classifier, does reasonably well on the project video. It looses the white car at some point for a second, but overall it detects cars in the video most of the time. It shows one false positive detection at the left side near the end of the video, but not for long.
 
